@@ -124,6 +124,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     static public InputStream inputStream;
+    static public InputStream inputStreamCet6;
+    static public InputStream inputStreamGre;
     /**
      * @author Zhilong Cao
      * @description:
@@ -151,6 +153,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         //get Stream from res.raw.directory
         inputStream = getResources().openRawResource(R.raw.cet);
+        inputStreamCet6 = getResources().openRawResource(R.raw.cet6);
+        inputStreamGre = getResources().openRawResource(R.raw.gre);
 
         //
         binding = ActivityMainBinding.inflate(getLayoutInflater());

@@ -163,19 +163,16 @@ public class WordBaseManager implements Serializable {
             wordBase_default = factory.creWordBase(114514,"default");
             wordBaseManager.addWordBase(114514, wordBase_default);
             //初始化default,这里加入了30个hello1,hello2....
-            for(int i=1;i<=30;i++)
-            {
-                Word tmpWord=Word.getWordFactory().creWord("hello"+i,"你好"+i);
-                wordBase_default.addWord(i,tmpWord);
-            }
-
             //创建官方WordBase,第一次运行该app才会执行,因为只有第一次运行时114514不存在
             //CET4
-            WordBase wordBase_CET4=factory.creWordBase(1,"CET4");
-            wordBaseManager.addWordBase(1, wordBase_CET4);
-            generateOfficalWordbase(MainActivity.inputStream);
-            //加入单词，后续考虑改变加入方法
-            Word tmpWord=Word.getWordFactory().creWord("abandon","vt.丢弃；放弃");
+
+            //添加仓库
+            generateOfficalWordbase(MainActivity.inputStream,"CET-4",1);
+            generateOfficalWordbase(MainActivity.inputStreamCet6,"CET-6",2);
+            generateOfficalWordbase(MainActivity.inputStreamGre,"GRE",3);
+
+
+            /*Word tmpWord=Word.getWordFactory().creWord("abandon","vt.丢弃；放弃");
             wordBase_CET4.addWord(1,tmpWord);
             tmpWord=Word.getWordFactory().creWord("aboard","adv.在（船）车上");
             wordBase_CET4.addWord(2,tmpWord);
@@ -195,6 +192,7 @@ public class WordBaseManager implements Serializable {
             wordBase_CET4.addWord(9,tmpWord);
             tmpWord=Word.getWordFactory().creWord("abandon","vt.丢弃；放弃");
             wordBase_CET4.addWord(10,tmpWord);
+            */
             //update old WordBaseManager
             WordBaseManager.setWordBaseManager();
         }
@@ -295,11 +293,14 @@ public class WordBaseManager implements Serializable {
      * @date :2022/12/10 13:14
      *
      **/
-    public static WordBase generateOfficalWordbase(InputStream in)
+    public static WordBase generateOfficalWordbase(InputStream in,String name,int id)
     {
-        WordBase wordBase = null;
+        IsWordBaseFactory factory = WordBase.getWordBaseFactory();
+        WordBase wordBase = factory.creWordBase(id,name);
         InputStreamReader inputStreamReader;
         BufferedReader bufferedReader;
+
+
 
         try
         {
@@ -307,13 +308,17 @@ public class WordBaseManager implements Serializable {
             inputStreamReader = new InputStreamReader(in,"utf8");
             bufferedReader = new BufferedReader(inputStreamReader);
             String str = bufferedReader.readLine();
+            int index = 1;
             while ( str != null)
             {
 
-
+                String[] strs = str.split(" ");
+                Word tmpWord=Word.getWordFactory().creWord(strs[0],strs[1]);
+                wordBase.addWord(index,tmpWord);
+                index++;
                 str = bufferedReader.readLine();
             }
-
+            wordBaseManager.addWordBase(id, wordBase);
 
             bufferedReader.close();
             inputStreamReader.close();
@@ -323,11 +328,7 @@ public class WordBaseManager implements Serializable {
         {
             e.printStackTrace();
         }
-        finally
-        {
 
-
-        }
         return wordBase;
     }
 
