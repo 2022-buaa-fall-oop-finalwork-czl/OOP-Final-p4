@@ -3,4 +3,7 @@
     <item
         android:id="@+id/change_wordbase"
         android:title="WordBase" />
+    <item
+        android:id="@+id/day_night"
+        android:title="Day Night Mode Switching" />
 </menu>

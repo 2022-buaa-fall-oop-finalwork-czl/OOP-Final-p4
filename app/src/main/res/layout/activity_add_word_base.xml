@@ -36,6 +36,7 @@
     <Button
         android:id="@+id/activityrecordbutton"
         android:layout_width="wrap_content"
+        android:backgroundTint="@color/mars_gre"
         android:text="添加"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

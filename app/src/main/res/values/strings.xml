@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">OOP2022FinalP2</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">单词列表</string>
+    <string name="title_dashboard">单词测试</string>
+    <string name="title_notifications">提醒设置</string>
 
     <string name="hello">HELLO WORLD</string>
     <string name="title_activity_show_word">ShowWordActivity</string>

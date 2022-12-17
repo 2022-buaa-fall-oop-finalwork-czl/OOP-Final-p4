@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.oop2022finalp2.Activities.ChangeWordBaseActivity;
+import com.example.oop2022finalp2.Activities.UISwitchActivity;
 import com.example.oop2022finalp2.Data.IsWordBaseFactory;
 import com.example.oop2022finalp2.Data.TestBase;
 import com.example.oop2022finalp2.Data.WordBase;
@@ -209,7 +210,10 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent=new Intent(MainActivity.this, ChangeWordBaseActivity.class);
                 startActivity(intent);
                 break;
-
+            case R.id.day_night:
+                Intent intent2=new Intent(MainActivity.this, UISwitchActivity.class);
+                startActivity(intent2);
+                break;
 
             default:
         }
